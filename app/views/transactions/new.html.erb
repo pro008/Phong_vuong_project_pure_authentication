@@ -1,0 +1,17 @@
+<h1>Create Transaction</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: [current_user, @transaction], local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :amount %>
+      <%= f.number_field :amount, :step => "0.001", class: 'form-control' %>
+
+      <%= f.label :transaction_type %>
+      <%= f.select :transaction_type, options_for_select(Transaction.transaction_types.keys) %>
+
+      <%= f.submit "Create Transaction", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
